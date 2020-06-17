@@ -7,6 +7,9 @@ function App() {
   //TODO: STEP 2 - Establish your applictaion's state with some useState hooks.  You'll need one for the home score and another for the away score.
   const [scoreHome, setScoreHome] = useState(0);
   const [scoreAway, setScoreAway] = useState(0);
+  const [quarter, setQuarter] = useState(1);
+  const [time, setTime] = useState(60);
+  React.useEffect(()=>{time>0 && setTimeout(()=> setTime(time-1), 1000);}, [time]);
 
   return (
     <div className="container">
@@ -18,7 +21,7 @@ function App() {
             {/* TODO STEP 3 - We need to change the hardcoded values in these divs to accept dynamic values from our state. */}
             <div className="home__score">{scoreHome}</div>
           </div>
-          <div className="timer">00:03</div>
+          <div className="timer">{time}</div>
           <div className="away">
             <h2 className="away__name">Tigers</h2>
             <div className="away__score">{scoreAway}</div>
